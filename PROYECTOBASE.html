@@ -12,36 +12,64 @@
   <!-- CSS propio -->
   <link rel="stylesheet" href="style.css">
 
-  <title>DIGIMON VERIFICANDO CAMBIOS</title>
+  <title>DIGIMON API</title>
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(181, 6, 181);">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
-        aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand" href="#">DIGIPEDIA</a>
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link active" aria-current="page" href="https://digimon.net">Digimon Official website</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" href="https://digimon.net/reference_en/">Digimon Encycopledia </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            <a class="nav-link" href="https://www.digimon.net/product/">Digimon Merchandise</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Links de interés
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="https://digimon.fandom.com/es/wiki/Digimon_Wiki">Digimon Wiki</a></li>
+              <li><a class="dropdown-item" href="https://m.animeflv.net/anime/digimon-adventure">Digimon Adventure.
+                  Anime.</a></li>
+              <li><a class="dropdown-item"
+                  href="https://www.aliexpress.com/af/digimon.html?catId=0&initiative_id=SB_20230422140356&SearchText=digimon&spm=a2g0o.productlist.1000002.0">Digimon
+                  Merchandise "official"</a></li>
+            </ul>
           </li>
         </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
       </div>
     </div>
   </nav>
+
+  <div class="table">
+    <table class="table container">
+      <thead>
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Imagen</th>
+          <th scope="col">Nivel</th>
+        </tr>
+      </thead>
+      <tbody id="tabla">
+        <tr>
+          <th scope="row"></th>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
 
 
