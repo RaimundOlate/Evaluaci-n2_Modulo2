@@ -1,5 +1,6 @@
 const contenido = document.querySelector('#tabla');
-const inputBusqueda = document.querySelector('#input-busqueda');
+const inputBusquedaNombre = document.querySelector('#input-busqueda-nombre');
+const inputBusquedaNivel = document.querySelector('#input-busqueda-nivel');
 
 fetch('https://digimon-api.vercel.app/api/digimon')
     .then(response => response.json())
@@ -41,15 +42,20 @@ function agregarEventoImagen() {
     });
 }
 
-inputBusqueda.addEventListener('input', () => {
-    const valorBusqueda = inputBusqueda.value.toLowerCase();
+function buscar() {
+    const valorBusquedaNombre = inputBusquedaNombre.value.toLowerCase();
+    const valorBusquedaNivel = inputBusquedaNivel.value.toLowerCase();
     const filas = contenido.querySelectorAll('tr');
     filas.forEach(fila => {
         const nombre = fila.querySelector('td:first-child').textContent.toLowerCase();
-        if (nombre.includes(valorBusqueda)) {
+        const nivel = fila.querySelector('td:nth-child(3)').textContent.toLowerCase();
+        if (nombre.includes(valorBusquedaNombre) && nivel.includes(valorBusquedaNivel)) {
             fila.style.display = '';
         } else {
             fila.style.display = 'none';
         }
     });
-});
+}
+
+inputBusquedaNombre.addEventListener('input', buscar);
+inputBusquedaNivel.addEventListener('input', buscar);
