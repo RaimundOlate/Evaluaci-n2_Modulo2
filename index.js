@@ -31,12 +31,12 @@ function agregarEventoImagen() {
     const botonesImagen = document.querySelectorAll('button[data-imagen]');
     botonesImagen.forEach(boton => {
         boton.addEventListener('click', () => {
-            const fila = boton.parentElement.parentElement.parentElement; // Obtener la fila que contiene el botón
-            const imagen = fila.querySelector('.imagen-oculta'); // Obtener la imagen oculta correspondiente a la fila
+            const fila = boton.parentElement.parentElement.parentElement;
+            const imagen = fila.querySelector('.imagen-oculta');
             if (imagen.style.display === 'none') {
-                imagen.style.display = 'block'; // Mostrar la imagen
+                imagen.style.display = 'block';
             } else {
-                imagen.style.display = 'none'; // Ocultar la imagen
+                imagen.style.display = 'none';
             }
         });
     });
