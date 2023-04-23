@@ -1,25 +1,37 @@
-//crear variable que contega los datos
-var contenido = document.querySelector('#tabla')
+const contenido = document.querySelector('#tabla');
 
-
-//Llamada a la API con fetch. Extraer datos de una url con una api
 fetch('https://digimon-api.vercel.app/api/digimon')
-    //convierte
     .then(response => response.json())
-    //asigna datos a la funcion
-    .then(datos => { tabla(datos) })
-
-
+    .then(datos => tabla(datos));
 
 function tabla(datos) {
-    contenido.innerHTML = ''
+    contenido.innerHTML = '';
     for (let temp of datos) {
         contenido.innerHTML += `
-            <tr> 
-                <th scope='row'>${temp.name}</th>
-                <td>${temp.img}</td>
-                <td>${temp.level}</td>
-            </tr>
-            `
+    <tr>
+        <td>${temp.name}</td>
+        <td>
+            <div>
+                <button class="btn btn-outline-dark btn-sm" data-imagen="${temp.img}">Ver diseño</button>
+                <img class="imagen-oculta" src="${temp.img}" style="display: none;">
+            </div>
+        </td>
+        <td>${temp.level}</td>
+    </tr>
+    `;
     }
+
+    // Agregar evento "click" a los botones
+    const botonesImagen = document.querySelectorAll('button[data-imagen]');
+    botonesImagen.forEach(boton => {
+        boton.addEventListener('click', () => {
+            const fila = boton.parentElement.parentElement.parentElement; // Obtener la fila que contiene el botón
+            const imagen = fila.querySelector('.imagen-oculta'); // Obtener la imagen oculta correspondiente a la fila
+            if (imagen.style.display === 'none') {
+                imagen.style.display = 'block'; // Mostrar la imagen
+            } else {
+                imagen.style.display = 'none'; // Ocultar la imagen
+            }
+        });
+    });
 }
