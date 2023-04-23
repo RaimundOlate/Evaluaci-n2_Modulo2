@@ -1,8 +1,12 @@
 const contenido = document.querySelector('#tabla');
+const inputBusqueda = document.querySelector('#input-busqueda');
 
 fetch('https://digimon-api.vercel.app/api/digimon')
     .then(response => response.json())
-    .then(datos => tabla(datos));
+    .then(datos => {
+        tabla(datos);
+        agregarEventoImagen();
+    });
 
 function tabla(datos) {
     contenido.innerHTML = '';
@@ -13,15 +17,16 @@ function tabla(datos) {
         <td>
             <div>
                 <button class="btn btn-outline-dark btn-sm" data-imagen="${temp.img}">Ver diseño</button>
-                <img class="imagen-oculta" src="${temp.img}" style="display: none;">
+                <img class="imagen-oculta" src="${temp.img}" style="display: none; width: 100px; height: 100px;">
             </div>
         </td>
         <td>${temp.level}</td>
     </tr>
     `;
     }
+}
 
-    // Agregar evento "click" a los botones
+function agregarEventoImagen() {
     const botonesImagen = document.querySelectorAll('button[data-imagen]');
     botonesImagen.forEach(boton => {
         boton.addEventListener('click', () => {
@@ -35,3 +40,16 @@ function tabla(datos) {
         });
     });
 }
+
+inputBusqueda.addEventListener('input', () => {
+    const valorBusqueda = inputBusqueda.value.toLowerCase();
+    const filas = contenido.querySelectorAll('tr');
+    filas.forEach(fila => {
+        const nombre = fila.querySelector('td:first-child').textContent.toLowerCase();
+        if (nombre.includes(valorBusqueda)) {
+            fila.style.display = '';
+        } else {
+            fila.style.display = 'none';
+        }
+    });
+});
